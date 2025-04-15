@@ -1,0 +1,13 @@
+# Basic rewrite rules
+RewriteEngine On
+
+# Redirect to index.php if file doesn't exist
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
+
+# Prevent access to sensitive files
+<FilesMatch "\.(env|log|sql|htaccess)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>

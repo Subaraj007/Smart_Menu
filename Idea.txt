@@ -1,0 +1,12 @@
+smartmenu/
+├── admin/
+│   ├── dashboard.php    # Admin portal
+│   ├── add_restaurant.php
+│   ├── manage_menu.php
+├── customer/
+│   ├── view_menu.php    # Customer-facing page
+├── includes/
+│   ├── db.php           # Database connection
+│   ├── functions.php    # Helper functions
+├── qr_codes/            # Generated QR codes storage
+├── index.php            # Main entry point

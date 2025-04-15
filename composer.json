@@ -1,0 +1,13 @@
+{
+    "require": {
+        "endroid/qr-code": "^4.0",
+        "ext-gd": "*",
+        "ext-json": "*",
+        "ext-pdo": "*"
+    },
+    "autoload": {
+        "files": [
+            "includes/functions.php"
+        ]
+    }
+}

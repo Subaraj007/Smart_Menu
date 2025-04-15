@@ -1,0 +1,45 @@
+1. Restaurants Sample Data
+INSERT INTO restaurants (rest_id, name, description, contact, address, logo, qr_code) VALUES
+('R0100', 'The GrillShack', 'Authentic Indian cuisine since 1995', '+94123456789', '123 Galle Road, Colombo', 'uploads/logos/grillshack.png', 'qr_codes/restaurant_R0100.png'),
+('R0101', 'Biryani House', 'Specializing in Hyderabadi biryani', '+94123456790', '45 Union Place, Colombo', 'uploads/logos/biryani_house.png', 'qr_codes/restaurant_R0101.png'),
+('R0102', 'Spice Garden', 'Modern fusion Indian restaurant', '+94123456791', '78 Marine Drive, Negombo', 'uploads/logos/spice_garden.png', 'qr_codes/restaurant_R0102.png');
+
+2. Menu Categories Sample Data
+INSERT INTO menu_categories (rest_id, name, display_order, is_active) VALUES
+('R0100', 'Biryani', 1, TRUE),
+('R0100', 'Starters', 2, TRUE),
+('R0100', 'Desserts', 3, TRUE),
+('R0101', 'Hyderabadi Biryani', 1, TRUE),
+('R0101', 'Tandoori', 2, TRUE),
+('R0102', 'Fusion Starters', 1, TRUE),
+('R0102', 'Signature Curries', 2, TRUE);
+
+3. Restaurant Users Sample Data
+-- Passwords are hashed with password_hash('password123', PASSWORD_DEFAULT)
+INSERT INTO restaurant_users (rest_id, username, password_hash, role) VALUES
+('R0100', 'admin_grill', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'),
+('R0100', 'staff_grill', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'staff'),
+('R0101', 'admin_biryani', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin'),
+('R0102', 'admin_spice', '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', 'admin');
+
+4. Menu Items Sample Data
+INSERT INTO menu_items (category_id, name, description, price, spicy_level, is_vegetarian, is_available) VALUES
+-- GrillShack items
+(1, 'Chicken Biryani', 'Fragrant basmati rice cooked with tender chicken and spices', 850.00, 3, FALSE, TRUE),
+(1, 'Mutton Biryani', 'Premium goat meat cooked with long grain rice', 950.00, 4, FALSE, TRUE),
+(1, 'Vegetable Biryani', 'Flavorful mix of vegetables with aromatic rice', 650.00, 2, TRUE, TRUE),
+(2, 'Chicken 65', 'Spicy deep-fried chicken appetizer', 450.00, 4, FALSE, TRUE),
+(2, 'Paneer Tikka', 'Grilled cottage cheese marinated in spices', 500.00, 2, TRUE, TRUE),
+(3, 'Gulab Jamun', 'Soft milk balls in sugar syrup', 250.00, 0, TRUE, TRUE),
+
+-- Biryani House items
+(4, 'Hyderabadi Chicken Dum Biryani', 'Authentic slow-cooked biryani with chicken', 950.00, 3, FALSE, TRUE),
+(4, 'Hyderabadi Mutton Dum Biryani', 'Slow-cooked biryani with tender mutton', 1100.00, 3, FALSE, TRUE),
+(5, 'Tandoori Chicken', 'Chicken marinated in yogurt and spices, cooked in clay oven', 800.00, 2, FALSE, TRUE),
+
+-- Spice Garden items
+(6, 'Fusion Chicken Lollipop', 'Crispy chicken wings with fusion glaze', 600.00, 3, FALSE, TRUE),
+(6, 'Avocado Chat', 'Avocado mixed with Indian spices and chutneys', 550.00, 1, TRUE, TRUE),
+(7, 'Butter Chicken Pizza', 'Butter chicken toppings on naan bread', 750.00, 2, FALSE, TRUE),
+(7, 'Malai Kofta', 'Vegetable dumplings in creamy sauce', 650.00, 1, TRUE, TRUE);
+

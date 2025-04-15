@@ -1,0 +1,38 @@
+CREATE TABLE restaurants (
+    rest_id VARCHAR(10) PRIMARY KEY,  -- Format: R0100, R0101, etc.
+    name VARCHAR(100) NOT NULL,
+    description TEXT,
+    contact VARCHAR(20),
+    address TEXT,
+    logo VARCHAR(255),
+    qr_code VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE TABLE menu_categories (
+    category_id INT AUTO_INCREMENT PRIMARY KEY,
+    rest_id VARCHAR(10),
+    name VARCHAR(100) NOT NULL,  -- e.g., "Biryani", "Starters"
+    display_order INT DEFAULT 0, -- For sorting categories
+    is_active BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (rest_id) REFERENCES restaurants(rest_id)
+);
+CREATE TABLE restaurant_users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    rest_id VARCHAR(10),
+    username VARCHAR(50) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role ENUM('admin','staff') DEFAULT 'staff',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (rest_id) REFERENCES restaurants(rest_id)
+);
+CREATE TABLE menu_items (
+    item_id INT AUTO_INCREMENT PRIMARY KEY,
+    category_id INT,
+    name VARCHAR(100) NOT NULL,       -- e.g., "Chicken Biryani", "Mutton Biryani"
+    description TEXT,
+    price DECIMAL(10,2) NOT NULL,
+    spicy_level TINYINT DEFAULT 0,    -- 0-5 scale (optional)
+    is_vegetarian BOOLEAN DEFAULT FALSE,
+    is_available BOOLEAN DEFAULT TRUE,
+    FOREIGN KEY (category_id) REFERENCES menu_categories(category_id)
+);
